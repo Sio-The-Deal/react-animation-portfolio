@@ -16,7 +16,7 @@ export const Background = () => {
                     // {/* transmission is the opacity of the material */}
                     side={THREE.BackSide}
                 >
-                    <Gradient colorA={"orange"} colorB={"white"} axes={"y"} start={0} end={-0.5}/> 
+                    <Gradient colorA={"orange"} colorB={"white"} axes={"y"} start={0} end={-0.7}/> 
                     {/* change the gradient from vertical to horizontal by changing the axes prop */}
                 </LayerMaterial>
             </Sphere>
