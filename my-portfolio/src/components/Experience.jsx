@@ -18,7 +18,7 @@ export const Experience = () => {
       <Asteroid opacity={0.5} scale={[0.1, 0.1, 0.2]} position-y={[-2, 1, -3]} />
       <Asteroid opacity={0.5} scale={[0.1, 0.1, 0.1]} position-y={[1.5, -0.5, -2]} />
       <Asteroid opacity={0.2} scale={[0.1, 0.1, 0.025]} rotation-y={Math.PI / 9} position={[2, -0.2, -2]} />
-      <Asteroid opacity={0.2} scale={[0.1, 0.1, 0.1]} rotation-y={Math.PI / 9} position={[1, -0.2, -12]} />
+      <Asteroid opacity={0.2} scale={[0.1, 0.1, 0.05]} rotation-y={Math.PI / 9} position={[1, -0.2, -12]} />
       <Asteroid opacity={0.2} scale={[0.1, 0.1, 0.1]} position={[0, 1, -53]} />
       <Asteroid opacity={0.2} scale={[0.1, 0.1, 0.1]} position={[0, 1, -100]} />
 
