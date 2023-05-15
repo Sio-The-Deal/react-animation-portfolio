@@ -6,12 +6,13 @@ import * as THREE from "three";
 import { useMemo, useRef, useEffect } from "react";
 import { Euler, Group, Vector3 } from "three";
 import { useFrame } from "@react-three/fiber";
+import { Text } from "@react-three/drei";
 
 
 
 
 
-const LINE_NB_POINTS = 27000;
+const LINE_NB_POINTS = 28000;
 
 export const Experience = () => {
   
@@ -65,15 +66,14 @@ export const Experience = () => {
     //slightly rotate our plane and camera based on curve
     const pointAhead = linePoints[Math.min(curPointIndex + 1), linePoints.length - 1];
 
-
     // calculate the difference between the x value from our position 
     // to the next position this way we can determine if we go to the left or right
     // math.pi / 2 rotation is left and  -Math.PI / 2 is Right
     const xDisplacement = (pointAhead.x - curPoint.x) * 20;
-    
+
     const angleRotation = (xDisplacement < 0 ? 1 : -1) * 50;
     //checks if xDisplacement is less than 0. If it is true, it assigns a value of 1, indicating a left rotation. If it is false, it assigns a value of -1, indicating a right rotation.
-    Math.min(Math.abs(xDisplacement), Math.PI / 3); //we dont want Math.abs to be left or right so we set /3
+    Math.min(Math.abs(xDisplacement), Math.PI / 4); //we dont want Math.abs to be left or right so we set /3
 
     const targetObjectQuaternion = new THREE.Quaternion().setFromEuler(
       new THREE.Euler(
@@ -109,6 +109,26 @@ export const Experience = () => {
         </Float>
         </group>
       </group>
+
+      {/* use drei library to add text */}
+      <group position={[-3, 0, -20]}>
+        <Text
+        color="white"
+        anchorX={"left"}
+        anchorY={"middle"}
+        fontSize={0.28}
+        maxWidth={2.5}
+        >
+          My name is Sio Chang{"\n"}
+          Welcome to my portfolio website. {"\n"}
+          My dog Bob will be our pilot.{"\n"}
+          Let's go for ride!
+        </Text>
+      </group>
+
+
+
+
       <group position-y={-2}>
         {/* <Line
           points={linePoints}
