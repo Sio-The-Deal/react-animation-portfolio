@@ -1,16 +1,17 @@
-import { Float, Line, OrbitControls, useAnimations } from "@react-three/drei";
+import { Float, OrbitControls, PerspectiveCamera, useScroll } from "@react-three/drei";
 import { Background } from "./Background";
 import { Dogfly } from "./Dogfly";
 import { Asteroid } from "./Asteroid";
 import * as THREE from "three";
-import { useMemo } from "react";
+import { useMemo, useRef, useEffect } from "react";
 import { Euler, Group, Vector3 } from "three";
+import { useFrame } from "@react-three/fiber";
 
 
 
 
 
-const LINE_NB_POINTS = 1800;
+const LINE_NB_POINTS = 27000;
 
 export const Experience = () => {
   
@@ -49,19 +50,65 @@ export const Experience = () => {
     return shape ;
   }, [curve]);
 
+  const cameraGroup = useRef();
+  const scroll = useScroll(); //declare scroll to useScroll to get the current scroll data
+
+  // get the current point on the line we are based on the score percentage we use mat.round
+  // to get the closest index then we attach our camera group position to the point
+  useFrame((_state, delta) => {
+    const curPointIndex = Math.min(
+      Math.round(scroll.offset * linePoints.length),
+      linePoints.length - 1
+    )
+    const curPoint = linePoints[curPointIndex];
+
+    //slightly rotate our plane and camera based on curve
+    const pointAhead = linePoints[Math.min(curPointIndex + 1), linePoints.length - 1];
+
+
+    // calculate the difference between the x value from our position 
+    // to the next position this way we can determine if we go to the left or right
+    // math.pi / 2 rotation is left and  -Math.PI / 2 is Right
+    const xDisplacement = (pointAhead.x - curPoint.x) * 20;
+    
+    const angleRotation = (xDisplacement < 0 ? 1 : -1) * 50;
+    //checks if xDisplacement is less than 0. If it is true, it assigns a value of 1, indicating a left rotation. If it is false, it assigns a value of -1, indicating a right rotation.
+    Math.min(Math.abs(xDisplacement), Math.PI / 3); //we dont want Math.abs to be left or right so we set /3
+
+    const targetObjectQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        dogfly.current.rotation.x,
+        dogfly.current.rotation.y,
+        angleRotation,
+      )
+    )
+    dogfly.current.quaternion.slerp(targetObjectQuaternion, delta * 2);
+    cameraGroup.current.quaternion.slerp(targetObjectQuaternion, delta * 2);
+
+    cameraGroup.current.position.lerp(curPoint, delta * 24);
+  });
+  // By adjusting the scaling factor (80) and the maximum rotation angle (Math.PI / 3),
+ //  you can control the intensity and range of the rotation effect based on the displacement between points.
+  const dogfly = useRef();
+
   return (
     <>
-      <OrbitControls />
-      <Background />
-      {/* <Float floatIntensity={1} speed={1.5} rotationIntensity={0.5}> */}
-      <Float floatIntensity={3} speed={2} rotationIntensity={2}>
+      {/* <OrbitControls enableZoom={false} /> */}
+      <group ref={cameraGroup}>
+        <Background />
+        <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
+        {/* <Float floatIntensity={1} speed={1.5} rotationIntensity={0.5}> */}
+        <group ref={dogfly}>
+        <Float floatIntensity={3} speed={1.3} rotationIntensity={0.8}>
 
-        <Dogfly
-          rotation-y={Math.PI / 4}
-          scale={[0.5, 0.5, 0.5]}
-          position-y={0.1}
-        />
-      </Float>
+          <Dogfly
+            rotation-y={Math.PI / 2}
+            scale={[0.4, 0.4, 0.4]}
+            position-y={0.1}
+          />
+        </Float>
+        </group>
+      </group>
       <group position-y={-2}>
         {/* <Line
           points={linePoints}
