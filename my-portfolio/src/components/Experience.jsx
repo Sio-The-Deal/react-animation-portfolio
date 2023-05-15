@@ -1,6 +1,6 @@
 import { Float, OrbitControls } from "@react-three/drei";
 import { Background } from "./Background";
-import { Dog } from "./Dog";
+import { Dogfly } from "./Dogfly";
 import { Asteroid } from "./Asteroid";
 
 export const Experience = () => {
@@ -8,9 +8,11 @@ export const Experience = () => {
     <>
       <OrbitControls />
       <Background />
-      <Float floatIntensity={1} speed={1.5} rotationIntensity={0.5}>
-        <Dog
-          rotation-y={Math.PI / 2}
+      {/* <Float floatIntensity={1} speed={1.5} rotationIntensity={0.5}> */}
+      <Float floatIntensity={3} speed={2} rotationIntensity={2}>
+
+        <Dogfly
+          rotation-y={Math.PI / 4}
           scale={[0.5, 0.5, 0.5]}
           position-y={0.1}
         />
