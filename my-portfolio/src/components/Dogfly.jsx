@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.1.11 public/models/dog/dogfly.glb
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from "@react-three/fiber";
-const HELIX_SPEED = 3
+const HELIX_SPEED = 5
 
 export function Dogfly(props) {
   const { nodes, materials } = useGLTF('./models/dog/dogfly.glb')
