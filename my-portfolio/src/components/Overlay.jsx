@@ -2,6 +2,9 @@ import { useProgress } from "@react-three/drei";
 import { usePlay } from "../contexts/context";
 
 export const Overlay = () => {
+  const redirectToPage = () => {
+    window.location.href = "https://github.com/Sio-The-Deal";
+  };
   const { progress } = useProgress();
   const { play, end, setPlay, hasScroll } = usePlay();
   return (
@@ -33,6 +36,9 @@ export const Overlay = () => {
       )}
       <div className={`outro ${end ? "outro--appear" : ""}`}>
         <p className="outro__text">Wish you had a great flight with us...Check my details below.</p>
+        <div style={{ pointerEvents: 'auto' }}>
+          <button className="explore" onClick={redirectToPage}>My Details</button>
+        </div>
       </div>
     </div>
   );
