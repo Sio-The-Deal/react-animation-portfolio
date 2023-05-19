@@ -456,8 +456,10 @@ export const Experience = () => {
 
   const tl = useRef();
   const backgroundColors = useRef({
-    colorA: "#3535cc",
-    colorB: "#abaadd",
+    // colorA: "#3535cc",
+    // colorB: "#abaadd",
+    colorA: "#CF5104",
+    colorB: "#ffde59",
   });
 
   const planeInTl = useRef();
@@ -478,7 +480,8 @@ export const Experience = () => {
     });
     tl.current.to(backgroundColors.current, {
       duration: 1,
-      colorA: "#81318b",
+      // colorA: "#81318b",
+      colorA: "#CF5104",
       colorB: "#55ab8f",
     });
 
