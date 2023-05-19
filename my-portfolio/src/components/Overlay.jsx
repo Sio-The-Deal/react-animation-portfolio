@@ -35,7 +35,7 @@ export const Overlay = () => {
         </div>
       )}
       <div className={`outro ${end ? "outro--appear" : ""}`}>
-        <p className="outro__text">Wish you had a great flight with us...Check my details below.</p>
+        <p className="outro__text">Wish you had a great flight with us...Checkout my details below.</p>
         <div style={{ pointerEvents: 'auto' }}>
           <button className="explore" onClick={redirectToPage}>My Details</button>
         </div>

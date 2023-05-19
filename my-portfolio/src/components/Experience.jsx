@@ -17,7 +17,7 @@ import { Cloud } from "./Cloud";
 
 
 
-const LINE_NB_POINTS = 7000;
+const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 250;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
@@ -57,10 +57,11 @@ export const Experience = () => {
           curvePoints[1].y,
           curvePoints[1].z
         ),
-        title: "Welcome to my website",
-        subtitle: `My dog Bob will be our captain today,
-Have a seat and enjoy the ride!`,
+        title: "My Info",
+        subtitle: `My dog Bob will be our captain today ;)
+        I'm an Enterprise Computing graduate from Dublin City University. `,
       },
+
       {
         cameraRailDist: 1.5,
         position: new Vector3(
@@ -68,9 +69,9 @@ Have a seat and enjoy the ride!`,
           curvePoints[2].y,
           curvePoints[2].z
         ),
-        title: "Services",
-        subtitle: `Do you want a drink?
-We have a wide range of beverages!`,
+        title: "My Skills",
+        subtitle: ` OOP, Python, SQL, HTML, CSS, JavaScript, React, Node.js, MongoDB, Machine Learning & much more!
+        `,
       },
       {
         cameraRailDist: -1,
@@ -79,8 +80,8 @@ We have a wide range of beverages!`,
           curvePoints[3].y,
           curvePoints[3].z
         ),
-        title: "Fear of flying?",
-        subtitle: `Our flight attendants will help you have a great journey`,
+        title: "Experience",
+        subtitle: `Worked in teams to develop web apps & data analysis projects.`,
       },
       {
         cameraRailDist: 1.5,
@@ -89,8 +90,8 @@ We have a wide range of beverages!`,
           curvePoints[4].y,
           curvePoints[4].z - 12
         ),
-        title: "Movies",
-        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        title: "Interests",
+        subtitle: `Web development, data analysis, tech news, machine learning & artificial intelligence.`,
       },
     ];
   }, []);
