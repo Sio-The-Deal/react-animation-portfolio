@@ -3,7 +3,7 @@ import { usePlay } from "../contexts/context";
 
 export const Overlay = () => {
   const redirectToPage = () => {
-    window.location.href = "https://github.com/Sio-The-Deal";
+    window.location.href = "https://siochang.vercel.app/";
   };
   const { progress } = useProgress();
   const { play, end, setPlay, hasScroll } = usePlay();
