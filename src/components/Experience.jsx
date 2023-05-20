@@ -81,7 +81,7 @@ export const Experience = () => {
           curvePoints[3].z
         ),
         title: "Experience",
-        subtitle: `Worked in teams to develop web apps & data analysis projects.`,
+        subtitle: `Worked in teams on building web apps & on data analysis projects.`,
       },
       {
         cameraRailDist: 1.5,
